@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Dor from '../components/Dor.astro';
+import ComoFunciona from '../components/ComoFunciona.astro';
+import Sobre from '../components/Sobre.astro';
+import Depoimentos from '../components/Depoimentos.astro';
+import Oferta from '../components/Oferta.astro';
+import StickyMobileCta from '../components/StickyMobileCta.astro';
+---
+<Layout
+  title="Sessão de Descoberta — Crislaine Reis | Psicanalista Clínica"
+  description="Agende sua Sessão de Descoberta e entenda o que está por trás da crise no seu casamento. 50 minutos de atendimento completo por R$ 147."
+>
+  <main>
+    <Hero />
+    <Dor />
+    <ComoFunciona />
+    <Sobre />
+    <Depoimentos />
+    <Oferta />
+
+    <footer class="py-8 px-4 text-center border-t border-base/50">
+      <p class="text-xs text-textMuted font-body mb-2">
+        © 2026 Crislaine Reis — Psicanalista Clínica · Av. João XXIII, 50 - Sl 19 - Central, Catalão - GO
+      </p>
+      <div class="flex items-center justify-center gap-4 text-xs font-body">
+        <a href="https://wa.me/5564996133332" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">
+          WhatsApp
+        </a>
+        <a href="#" class="text-primary hover:underline">
+          Política de Privacidade
+        </a>
+      </div>
+    </footer>
+  </main>
+
+  <StickyMobileCta />
+</Layout>
