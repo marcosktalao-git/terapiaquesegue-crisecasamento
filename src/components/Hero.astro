@@ -1,4 +1,4 @@
----
+﻿---
 import CtaButton from './CtaButton.astro';
 ---
 <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
@@ -14,12 +14,44 @@ import CtaButton from './CtaButton.astro';
     Na Sessão de Descoberta você entende o que está por trás da crise no seu casamento e sai com um plano prático pra seguir, com ou sem seu parceiro na sessão.
   </p>
 
-  <div class="relative w-full max-w-3xl mx-auto mb-10 aspect-video rounded-2xl overflow-hidden shadow-xl bg-surfaceAccent">
-    <!-- Substituir pelo embed real do Panda Video ou VTurb -->
-    <div class="absolute inset-0 flex items-center justify-center text-textMuted font-body">
-      <p>Vídeo VSL será inserido aqui</p>
-    </div>
+  <div class="relative w-full max-w-sm mx-auto mb-10 aspect-[9/16] rounded-2xl overflow-hidden shadow-xl bg-surfaceAccent">
+    <video
+      id="vsl-video"
+      class="w-full h-full object-cover cursor-pointer"
+      src="/vsl-sessao-descoberta.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+    ></video>
+
+    <button
+      id="unmute-btn"
+      class="absolute bottom-4 right-4 bg-white/90 hover:bg-white text-primary rounded-full p-3 shadow-lg transition-all font-body flex items-center gap-2 text-sm font-semibold"
+      aria-label="Ativar som do vídeo"
+    >
+      <svg id="icon-muted" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.707.707L4.586 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.586l3.707-3.707a1 1 0 011.09-.217zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z"/>
+      </svg>
+      <span id="unmute-text">Ativar som</span>
+    </button>
   </div>
 
   <CtaButton text="Quero Agendar Minha Sessão de Descoberta" checkoutUrl="#oferta" large />
 </section>
+
+<script>
+  const video = document.getElementById('vsl-video') as HTMLVideoElement;
+  const unmuteBtn = document.getElementById('unmute-btn');
+  const unmuteText = document.getElementById('unmute-text');
+
+  function unmute() {
+    video.muted = false;
+    video.play();
+    if (unmuteBtn) unmuteBtn.style.display = 'none';
+  }
+
+  video?.addEventListener('click', unmute);
+  unmuteBtn?.addEventListener('click', unmute);
+</script>
+
